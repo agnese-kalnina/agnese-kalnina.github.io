@@ -5,28 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agnese Kalnina</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0a0a0a;
-      --gray-900: #1a1a1a;
-      --gray-600: #525252;
-      --gray-400: #a3a3a3;
-      --gray-200: #e5e5e5;
-      --gray-100: #f5f5f5;
-      --white: #ffffff;
-      --accent: #0a0a0a;
+      --surface:       #f6f0e2;
+      --surface-deep:  #ede5d2;
+      --copy:          #1a1410;
+      --muted:         #4a3f37;
+      --faint:         #998c7e;
+      --border:        #ddd1bc;
+      --accent:        #6b2c39;
+      --accent-tint:   rgba(107, 44, 57, 0.06);
+      --gold:          #b89968;
+      --font-display:  'Cormorant Garamond', 'Newsreader', Georgia, serif;
+      --font-serif:    'Newsreader', Georgia, serif;
+      --font-sans:     'Inter', -apple-system, sans-serif;
+      --rule:          1px solid var(--border);
+      --rule-accent:   1px solid var(--accent);
+      --rule-gold:     0.5px solid var(--gold);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.6;
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.55;
+      background: var(--surface);
+      color: var(--copy);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -35,20 +44,21 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-200);
+      background: rgba(246, 240, 226, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: var(--rule);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 48px;
-      height: 60px;
+      padding: 0 56px;
+      height: 56px;
     }
-    nav .logo {
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: var(--black);
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      color: var(--copy);
       text-decoration: none;
     }
     nav ul {
@@ -57,326 +67,383 @@
       gap: 36px;
     }
     nav ul a {
-      color: var(--gray-600);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
       transition: color 0.15s;
     }
-    nav ul a:hover { color: var(--black); }
+    nav ul a:hover { color: var(--accent); }
 
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
       display: flex;
-      align-items: center;
-      padding: 120px 48px 80px;
-      max-width: 1100px;
+      align-items: flex-end;
+      padding: 120px 56px 80px;
+      max-width: 1200px;
       margin: 0 auto;
     }
-    .hero-inner { max-width: 640px; }
-    .hero-tag {
-      font-size: 0.8rem;
+    .hero-inner { width: 100%; }
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
       font-weight: 500;
-      color: var(--gray-400);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 32px;
+      color: var(--accent);
+      margin-bottom: 28px;
     }
-    .hero-inner h1 {
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
+    .hero-name {
+      font-family: var(--font-display);
       font-weight: 300;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      color: var(--black);
-      margin-bottom: 24px;
+      font-size: clamp(80px, 12vw, 156px);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--copy);
+      margin-bottom: 40px;
     }
-    .hero-inner h1 em {
-      font-style: normal;
-      font-weight: 600;
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-bottom {
+      border-top: var(--rule-gold);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
     }
     .hero-subtitle {
-      font-size: 1rem;
-      color: var(--gray-600);
-      font-weight: 400;
-      margin-bottom: 8px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.04em;
     }
     .hero-location {
-      font-size: 0.88rem;
-      color: var(--gray-400);
-      margin-bottom: 48px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
     }
     .hero-cta {
       display: flex;
       gap: 12px;
-      flex-wrap: wrap;
       align-items: center;
     }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 11px 22px;
-      border-radius: 6px;
-      font-size: 0.875rem;
+      font-family: var(--font-sans);
+      font-size: 11px;
       font-weight: 500;
-      text-decoration: none;
-      transition: all 0.15s;
-      border: 1px solid transparent;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: var(--black);
-      color: var(--white);
-      border-color: var(--black);
-    }
-    .btn-primary:hover { background: var(--gray-900); }
-    .btn-outline {
-      background: transparent;
-      color: var(--black);
-      border-color: var(--gray-200);
-    }
-    .btn-outline:hover { border-color: var(--gray-400); }
-
-    /* ── SECTION SHARED ── */
-    section { padding: 100px 48px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--gray-400);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      text-decoration: none;
+      padding: 11px 24px;
+      border: var(--rule-accent);
+      color: var(--accent);
+      background: transparent;
+      transition: all 0.15s;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn:hover { background: var(--accent-tint); }
+    .btn-fill {
+      background: var(--accent);
+      color: var(--surface);
+      border-color: var(--accent);
+    }
+    .btn-fill:hover { background: #55222d; border-color: #55222d; }
+
+    /* ── SHARED ── */
+    section { padding: 100px 56px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
     }
     .section-title {
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-family: var(--font-display);
       font-weight: 300;
-      letter-spacing: -0.02em;
-      color: var(--black);
+      font-size: clamp(36px, 4vw, 56px);
+      letter-spacing: -0.015em;
+      line-height: 1.0;
+      color: var(--copy);
       margin-bottom: 64px;
     }
-
-    /* ── DIVIDER ── */
-    .divider {
-      height: 1px;
-      background: var(--gray-200);
-      max-width: 1100px;
-      margin: 0 auto;
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
     }
 
     /* ── ABOUT ── */
-    #about { background: var(--gray-100); }
+    #about { background: var(--surface); border-top: var(--rule); }
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 3fr 2fr;
       gap: 80px;
       align-items: start;
     }
     .about-text p {
-      color: var(--gray-600);
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--muted);
       margin-bottom: 20px;
-      font-size: 0.975rem;
-      line-height: 1.75;
+      line-height: 1.7;
     }
     .about-text p:last-child { margin-bottom: 0; }
-    .about-text strong { color: var(--black); font-weight: 500; }
+    .about-text strong {
+      font-weight: 500;
+      color: var(--copy);
+    }
+    .pull-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--accent);
+      line-height: 1.3;
+      letter-spacing: -0.005em;
+      border-top: var(--rule-gold);
+      padding-top: 20px;
+      margin-bottom: 32px;
+    }
     .stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
+      gap: 1px;
+      background: var(--border);
     }
     .stat-card {
-      background: var(--white);
+      background: var(--surface);
       padding: 28px 24px;
     }
-    .stat-card .num {
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: var(--black);
-      letter-spacing: -0.02em;
+    .stat-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 38px;
+      font-weight: 400;
+      color: var(--gold);
       line-height: 1;
       margin-bottom: 8px;
+      letter-spacing: -0.01em;
     }
-    .stat-card .label {
-      font-size: 0.8rem;
-      color: var(--gray-400);
+    .stat-label {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--faint);
       line-height: 1.4;
     }
 
     /* ── EXPERIENCE ── */
-    #experience { background: var(--white); }
-    .timeline { display: flex; flex-direction: column; gap: 0; }
+    #experience { background: var(--surface-deep); border-top: var(--rule); }
+    .timeline { display: flex; flex-direction: column; }
     .timeline-item {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 40px;
-      padding: 36px 0;
-      border-top: 1px solid var(--gray-200);
+      grid-template-columns: 180px 1fr;
+      gap: 48px;
+      padding: 40px 0;
+      border-top: var(--rule);
     }
-    .timeline-item:last-child { border-bottom: 1px solid var(--gray-200); }
-    .tl-meta { padding-top: 2px; }
+    .timeline-item:last-child { border-bottom: var(--rule); }
+    .tl-left { padding-top: 3px; }
+    .tl-numeral {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 28px;
+      color: var(--gold);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 8px;
+      display: block;
+    }
     .tl-date {
-      font-size: 0.8rem;
-      color: var(--gray-400);
-      margin-bottom: 4px;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--faint);
+      letter-spacing: 0.04em;
     }
     .badge-current {
       display: inline-block;
-      background: var(--black);
-      color: var(--white);
-      font-size: 0.65rem;
+      background: var(--accent-tint);
+      border: 0.5px solid var(--accent);
+      color: var(--accent);
+      font-size: 9px;
       font-weight: 500;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
       padding: 2px 7px;
-      border-radius: 3px;
       text-transform: uppercase;
+      margin-top: 6px;
     }
     .tl-company {
-      font-weight: 500;
-      color: var(--black);
-      font-size: 0.95rem;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 20px;
+      color: var(--copy);
+      letter-spacing: -0.01em;
       margin-bottom: 4px;
     }
     .tl-role {
-      color: var(--gray-400);
-      font-size: 0.85rem;
+      font-size: 12px;
       font-weight: 400;
-      margin-bottom: 12px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
     .tl-desc {
-      color: var(--gray-600);
-      font-size: 0.9rem;
-      line-height: 1.7;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
     }
 
     /* ── SKILLS ── */
-    #skills { background: var(--gray-100); }
+    #skills { background: var(--surface); border-top: var(--rule); }
     .skills-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
     }
-    .skill-group h3 {
-      font-size: 0.75rem;
+    .skill-group-title {
+      font-size: 11px;
       font-weight: 500;
-      color: var(--gray-400);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      color: var(--faint);
+      border-bottom: var(--rule-gold);
+      padding-bottom: 12px;
       margin-bottom: 24px;
     }
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .skill-pill {
-      background: var(--white);
-      color: var(--gray-600);
-      padding: 8px 16px;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: 400;
-      border: 1px solid var(--gray-200);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      padding: 7px 16px;
+      border: 0.5px solid var(--border);
+      letter-spacing: 0.02em;
       transition: border-color 0.15s, color 0.15s;
     }
-    .skill-pill:hover { border-color: var(--gray-400); color: var(--black); }
+    .skill-pill:hover { border-color: var(--gold); color: var(--copy); }
     .lang-list { display: flex; flex-direction: column; }
     .lang-item {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: baseline;
       padding: 14px 0;
-      border-bottom: 1px solid var(--gray-200);
+      border-bottom: var(--rule);
     }
-    .lang-item:first-child { border-top: 1px solid var(--gray-200); }
+    .lang-item:first-child { border-top: var(--rule); }
     .lang-name {
-      font-size: 0.9rem;
-      color: var(--black);
+      font-family: var(--font-display);
+      font-size: 17px;
       font-weight: 400;
+      color: var(--copy);
+      letter-spacing: -0.01em;
     }
     .lang-level {
-      font-size: 0.8rem;
-      color: var(--gray-400);
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--faint);
+      letter-spacing: 0.06em;
     }
 
     /* ── EDUCATION ── */
-    #education { background: var(--white); }
+    #education { background: var(--surface-deep); border-top: var(--rule); }
     .edu-list { display: flex; flex-direction: column; }
     .edu-item {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 40px;
-      padding: 32px 0;
-      border-top: 1px solid var(--gray-200);
+      grid-template-columns: 180px 1fr;
+      gap: 48px;
+      padding: 36px 0;
+      border-top: var(--rule);
     }
-    .edu-item:last-child { border-bottom: 1px solid var(--gray-200); }
-    .edu-year {
-      font-size: 0.8rem;
-      color: var(--gray-400);
-      padding-top: 2px;
+    .edu-item:last-child { border-bottom: var(--rule); }
+    .edu-type {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+      padding-top: 3px;
     }
     .edu-school {
-      font-weight: 500;
-      color: var(--black);
-      font-size: 0.95rem;
-      margin-bottom: 4px;
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--copy);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
     }
     .edu-degree {
-      color: var(--gray-600);
-      font-size: 0.875rem;
-      margin-bottom: 4px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
     }
     .edu-note {
-      color: var(--gray-400);
-      font-size: 0.8rem;
+      font-size: 12px;
+      font-style: italic;
+      color: var(--faint);
+      margin-top: 4px;
     }
 
     /* ── CONTACT ── */
-    #contact { background: var(--black); }
-    #contact .section-label { color: var(--gray-400); }
-    #contact .section-title { color: var(--white); }
-    #contact .section-title { margin-bottom: 16px; }
+    #contact {
+      background: var(--copy);
+      border-top: var(--rule);
+    }
+    #contact .section-eyebrow { color: var(--gold); }
+    #contact .section-title { color: var(--surface); }
     #contact .subtitle {
-      font-size: 0.95rem;
-      color: var(--gray-400);
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(246,240,226,0.5);
       margin-bottom: 52px;
-      font-weight: 400;
+      margin-top: -40px;
     }
-    .contact-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .contact-links { display: flex; gap: 12px; flex-wrap: wrap; }
     .contact-chip {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 6px;
-      font-size: 0.875rem;
+      gap: 10px;
+      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(246,240,226,0.7);
+      text-decoration: none;
+      padding: 13px 22px;
+      border: 0.5px solid rgba(246,240,226,0.2);
       transition: all 0.15s;
     }
     .contact-chip:hover {
-      border-color: rgba(255,255,255,0.4);
-      color: var(--white);
+      border-color: var(--gold);
+      color: var(--surface);
     }
-    .contact-chip svg { width: 16px; height: 16px; opacity: 0.6; }
+    .contact-chip svg { width: 15px; height: 15px; opacity: 0.6; flex-shrink: 0; }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--black);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.25);
+      background: var(--copy);
+      border-top: 0.5px solid rgba(246,240,226,0.1);
+      color: rgba(246,240,226,0.2);
       text-align: center;
-      padding: 24px 48px;
-      font-size: 0.8rem;
+      padding: 24px 56px;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
     }
 
     /* ── RESPONSIVE ── */
@@ -385,11 +452,9 @@
       nav ul { display: none; }
       #hero { padding: 100px 24px 60px; }
       section { padding: 72px 24px; }
+      .hero-name { font-size: 72px; }
       .about-grid, .skills-grid { grid-template-columns: 1fr; gap: 48px; }
-      .timeline-item, .edu-item {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
+      .timeline-item, .edu-item { grid-template-columns: 1fr; gap: 16px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -398,7 +463,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="logo">Agnese Kalnina</a>
+  <a href="#hero" class="nav-logo">Agnese Kalnina</a>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -409,49 +474,56 @@
 </nav>
 
 <!-- HERO -->
-<div id="hero">
+<section id="hero" style="padding-top: 0; padding-bottom: 0;">
   <div class="hero-inner">
-    <p class="hero-tag">Private Equity &amp; Venture Capital</p>
-    <h1><em>Agnese</em><br>Kalnina</h1>
-    <p class="hero-subtitle">CEO of LVCA &nbsp;·&nbsp; Angel Investor &nbsp;·&nbsp; Partnerships Leader</p>
-    <p class="hero-location">Riga, Latvia</p>
-    <div class="hero-cta">
-      <a href="#experience" class="btn btn-primary">View experience</a>
-      <a href="https://www.linkedin.com/in/agnesekalnina" target="_blank" class="btn btn-outline">LinkedIn</a>
+    <div class="hero-eyebrow">Private Equity &amp; Venture Capital</div>
+    <h1 class="hero-name"><em>Agnese</em><br>Kalnina</h1>
+    <div class="hero-bottom">
+      <div>
+        <div class="hero-subtitle">CEO of LVCA &nbsp;·&nbsp; Angel Investor &nbsp;·&nbsp; Partnerships Leader</div>
+        <div class="hero-location" style="margin-top: 6px;">Riga, Latvia</div>
+      </div>
+      <div class="hero-cta">
+        <a href="#experience" class="btn btn-fill">View experience</a>
+        <a href="https://www.linkedin.com/in/agnesekalnina" target="_blank" class="btn">LinkedIn</a>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="divider"></div>
+</section>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <p class="section-label">About</p>
-    <h2 class="section-title">Strategy &amp; people — always.</h2>
+    <div class="section-eyebrow">About</div>
+    <h2 class="section-title">Strategy &amp; people —<br><em>always.</em></h2>
     <div class="about-grid">
-      <div class="about-text">
-        <p>I have always been drawn to two things: <strong>strategy and people</strong>. Throughout my career I've built partnerships from scratch, led teams, and co-founded initiatives that make a real dent in the world.</p>
-        <p>Currently I lead the <strong>Latvian Private Equity and Venture Capital Association (LVCA)</strong>, championing the startup and investment ecosystem in Latvia and the wider CEE region. I am also an active angel investor through <strong>BADideas.fund</strong>, backing post-MVP startups with €50–150K tickets.</p>
-        <p>I'm a co-founder of the <strong>Global Shapers Riga Hub</strong> — a World Economic Forum initiative — and I mentor students navigating career choices and personal growth.</p>
-        <p>Outside of work you'll find me at a theater or concert, or tucked into a corner with a coffee and a psychology book.</p>
+      <div>
+        <div class="pull-quote">"I have always been drawn to two things: strategy and people."</div>
+        <div class="about-text">
+          <p>Throughout my career I've built partnerships from scratch, led teams, and co-founded initiatives that make a real dent in the world.</p>
+          <p>Currently I lead the <strong>Latvian Private Equity and Venture Capital Association (LVCA)</strong>, championing the startup and investment ecosystem in Latvia and the wider CEE region. I am also an active angel investor through <strong>BADideas.fund</strong>, backing post-MVP startups with €50–150K tickets.</p>
+          <p>I'm a co-founder of the <strong>Global Shapers Riga Hub</strong> — a World Economic Forum initiative — and I mentor students navigating career choices and personal growth.</p>
+          <p>Outside of work you'll find me at a theater or concert, or tucked into a corner with a coffee and a psychology book.</p>
+        </div>
       </div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="num">10+</div>
-          <div class="label">Years across strategy, BD &amp; partnerships</div>
-        </div>
-        <div class="stat-card">
-          <div class="num">5</div>
-          <div class="label">Languages spoken</div>
-        </div>
-        <div class="stat-card">
-          <div class="num">CEE</div>
-          <div class="label">Focus region as an angel investor</div>
-        </div>
-        <div class="stat-card">
-          <div class="num">WEF</div>
-          <div class="label">Co-founder, Global Shapers Riga Hub</div>
+      <div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Years across strategy, BD &amp; partnerships</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Languages spoken</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">CEE</div>
+            <div class="stat-label">Focus region as an angel investor</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">WEF</div>
+            <div class="stat-label">Co-founder, Global Shapers Riga Hub</div>
+          </div>
         </div>
       </div>
     </div>
@@ -461,24 +533,26 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <p class="section-label">Career</p>
-    <h2 class="section-title">Experience</h2>
+    <div class="section-eyebrow">Career</div>
+    <h2 class="section-title"><em>Experience</em></h2>
     <div class="timeline">
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">01</span>
           <div class="tl-date">Oct 2024 – Present</div>
           <div><span class="badge-current">Current</span></div>
         </div>
         <div>
-          <div class="tl-company">Latvian Private Equity &amp; Venture Capital Association (LVCA)</div>
+          <div class="tl-company">LVCA</div>
           <div class="tl-role">Chief Executive Officer</div>
           <div class="tl-desc">Leading Latvia's PE &amp; VC association, strengthening the investment ecosystem and representing the interests of private equity and venture capital in the CEE region.</div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">02</span>
           <div class="tl-date">Aug 2023 – Present</div>
           <div><span class="badge-current">Current</span></div>
         </div>
@@ -490,7 +564,8 @@
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">03</span>
           <div class="tl-date">Apr 2023 – Sep 2024</div>
         </div>
         <div>
@@ -501,7 +576,8 @@
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">04</span>
           <div class="tl-date">Nov 2019 – Nov 2022</div>
         </div>
         <div>
@@ -512,7 +588,8 @@
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">05</span>
           <div class="tl-date">2018 – Nov 2019</div>
         </div>
         <div>
@@ -523,7 +600,8 @@
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">06</span>
           <div class="tl-date">2018</div>
         </div>
         <div>
@@ -534,7 +612,8 @@
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">07</span>
           <div class="tl-date">Jun 2016 – Jul 2018</div>
         </div>
         <div>
@@ -545,7 +624,8 @@
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">08</span>
           <div class="tl-date">2016 – 2017</div>
         </div>
         <div>
@@ -556,7 +636,8 @@
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">09</span>
           <div class="tl-date">2015</div>
         </div>
         <div>
@@ -567,7 +648,8 @@
       </div>
 
       <div class="timeline-item">
-        <div class="tl-meta">
+        <div class="tl-left">
+          <span class="tl-numeral">10</span>
           <div class="tl-date">2013 – 2014</div>
         </div>
         <div>
@@ -584,12 +666,12 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <p class="section-label">Skills &amp; Languages</p>
-    <h2 class="section-title">What I bring</h2>
+    <div class="section-eyebrow">Skills &amp; Languages</div>
+    <h2 class="section-title">What I <em>bring</em></h2>
     <div class="skills-grid">
-      <div class="skill-group">
-        <h3>Core Skills</h3>
-        <div class="skill-list">
+      <div>
+        <div class="skill-group-title">Core Skills</div>
+        <div class="skill-pills">
           <span class="skill-pill">Partnerships &amp; BD</span>
           <span class="skill-pill">Strategy</span>
           <span class="skill-pill">Critical Thinking</span>
@@ -602,8 +684,8 @@
           <span class="skill-pill">Teamwork</span>
         </div>
       </div>
-      <div class="skill-group">
-        <h3>Languages</h3>
+      <div>
+        <div class="skill-group-title">Languages</div>
         <div class="lang-list">
           <div class="lang-item">
             <span class="lang-name">Latvian</span>
@@ -634,18 +716,18 @@
 <!-- EDUCATION -->
 <section id="education">
   <div class="container">
-    <p class="section-label">Education</p>
-    <h2 class="section-title">Academic background</h2>
+    <div class="section-eyebrow">Education</div>
+    <h2 class="section-title">Academic <em>background</em></h2>
     <div class="edu-list">
       <div class="edu-item">
-        <div class="edu-year">BSc</div>
+        <div class="edu-type">BSc</div>
         <div>
           <div class="edu-school">Rīgas Ekonomikas augstskola — Stockholm School of Economics in Riga</div>
           <div class="edu-degree">Economics and Business</div>
         </div>
       </div>
       <div class="edu-item">
-        <div class="edu-year">Exchange</div>
+        <div class="edu-type">Exchange</div>
         <div>
           <div class="edu-school">Universidad Rey Juan Carlos, Spain</div>
           <div class="edu-degree">Business Administration and Management</div>
@@ -653,7 +735,7 @@
         </div>
       </div>
       <div class="edu-item">
-        <div class="edu-year">Secondary</div>
+        <div class="edu-type">Secondary</div>
         <div>
           <div class="edu-school">Riga State Gymnasium No. 1</div>
           <div class="edu-degree">Focus: Business and Mathematics</div>
@@ -666,8 +748,8 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <p class="section-label">Get in touch</p>
-    <h2 class="section-title">Let's connect</h2>
+    <div class="section-eyebrow">Get in touch</div>
+    <h2 class="section-title">Let's <em>connect</em></h2>
     <p class="subtitle">Whether you're a founder, investor, or just want to talk strategy — I'd love to hear from you.</p>
     <div class="contact-links">
       <a href="mailto:ag.kalnina@gmail.com" class="contact-chip">
